@@ -2,13 +2,15 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /opt/codedeploy-agent/deployment-root/
+    destination: /home/ec2-user/myapp/
+
 hooks:
   BeforeInstall:
-    - location: scripts/start_container.sh
+    - location: /home/ec2-user/myapp/scripts/start_container.sh
       timeout: 300
       runas: root
+
   AfterInstall:
-    - location: scripts/stop_container.sh
+    - location: /home/ec2-user/myapp/scripts/stop_container.sh
       timeout: 300
       runas: root
